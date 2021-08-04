@@ -1,0 +1,28 @@
+diff --git a/board/servo_v4/board.h b/board/servo_v4/board.h
+index 9ff102978..263f1fbad 100644
+--- a/board/servo_v4/board.h
++++ b/board/servo_v4/board.h
+@@ -40,6 +40,10 @@
+ #define CONFIG_USB
+ #define CONFIG_USB_PID 0x501b
+ #define CONFIG_USB_CONSOLE
++#define CONFIG_USB_CONSOLE
++#define CONFIG_UART_CONSOLE 1
++#undef CONFIG_UART_TX_DMA
++#undef CONFIG_UART_RX_DMA
+ #define CONFIG_USB_UPDATE
+ #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
+ 
+diff --git a/common/main.c b/common/main.c
+index d9fbe94a1..c79098f7b 100644
+--- a/common/main.c
++++ b/common/main.c
+@@ -110,7 +110,7 @@ test_mockable __keep int main(void)
+ 	 * Initialize flash and apply write protect if necessary.  Requires
+ 	 * the reset flags calculated by system initialization.
+ 	 */
+-	crec_flash_pre_init();
++	//crec_flash_pre_init();
+ #endif
+ 
+ 	/* Set the CPU clocks / PLLs.  System is now running at full speed. */

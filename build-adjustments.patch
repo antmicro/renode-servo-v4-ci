@@ -1,0 +1,26 @@
+diff --git a/chip/stm32/config-stm32f07x.h b/chip/stm32/config-stm32f07x.h
+index 918a117a2..24d0854a3 100644
+--- a/chip/stm32/config-stm32f07x.h
++++ b/chip/stm32/config-stm32f07x.h
+@@ -4,7 +4,7 @@
+  */
+ 
+ /* Memory mapping */
+-#define CONFIG_FLASH_SIZE_BYTES (128 * 1024)
++#define CONFIG_FLASH_SIZE_BYTES (256 * 1024)
+ #define CONFIG_FLASH_BANK_SIZE  0x1000
+ #define CONFIG_FLASH_ERASE_SIZE 0x0800  /* erase bank size */
+ #define CONFIG_FLASH_WRITE_SIZE 0x0002  /* minimum write size */
+diff --git a/core/cortex-m0/build.mk b/core/cortex-m0/build.mk
+index b0136f347..adc86f24f 100644
+--- a/core/cortex-m0/build.mk
++++ b/core/cortex-m0/build.mk
+@@ -12,7 +12,7 @@ $(call set-option,CROSS_COMPILE,\
+ 	/opt/coreboot-sdk/bin/arm-eabi-)
+ 
+ # CPU specific compilation flags
+-CFLAGS_CPU+=-mthumb -Os -mno-sched-prolog
++CFLAGS_CPU+=-mthumb -Og -g -mno-sched-prolog
+ CFLAGS_CPU+=-mno-unaligned-access
+ 
+ ifneq ($(CONFIG_LTO),)
