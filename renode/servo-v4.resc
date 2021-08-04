@@ -1,0 +1,16 @@
+using sysbus
+
+mach create
+machine LoadPlatformDescription $ORIGIN/servo-v4.repl
+
+showAnalyzer usart1
+
+
+macro reset
+"""
+    sysbus LoadELF $ORIGIN/../ec.obj
+    sysbus LoadSymbolsFrom $ORIGIN/../ec.RO.elf
+"""
+
+runMacro $reset
+
