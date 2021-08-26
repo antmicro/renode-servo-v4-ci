@@ -1,0 +1,8 @@
+{
+    "tags": [
+      "renode",
+      "stm32",
+      "ci"
+    ],
+    "categories": ["Edge AI & Software", "Cloud Systems"]
+}
