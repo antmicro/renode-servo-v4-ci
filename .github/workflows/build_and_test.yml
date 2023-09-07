@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       BOARD:  servo_v4
-      EC_REV: main
+      EC_REV: ab6a9a4
       GCC_ARM_PREFIX: gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-
     steps:
       - name: Checkout repository
@@ -31,7 +31,7 @@ jobs:
           cd ec
           git checkout ${EC_REV}
           if ls $GITHUB_WORKSPACE/*.patch; then for PATCH in $GITHUB_WORKSPACE/*.patch; do git apply $PATCH; done; fi
-          CROSS_COMPILE_arm=$GITHUB_WORKSPACE/${GCC_ARM_PREFIX} make
+          CROSS_COMPILE_arm=$GITHUB_WORKSPACE/${GCC_ARM_PREFIX} make BOARD=servo_v4
           cp $GITHUB_WORKSPACE/ec/build/servo_v4/{ec.obj,RW/ec.RW.elf,RO/ec.RO.elf} $GITHUB_WORKSPACE
 
       - name: Test in Renode
